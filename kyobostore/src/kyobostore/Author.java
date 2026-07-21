@@ -12,7 +12,7 @@ public class Author {
 	
 	/**
 	 * 해당 작가가 담당한 부분 글 / 그림 / 옮김
-	 */
+	 */	
 	String part;
 	
 	/**

@@ -37,5 +37,9 @@ public class Book {
 //	 */
 //	Date publish;
 //	
+	
+	public void purchase(String bookname) {
+		System.out.println(bookname + "구매 " + price + "원 입니다.");
+	}
 
 }

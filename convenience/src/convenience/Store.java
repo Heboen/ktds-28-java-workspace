@@ -161,7 +161,7 @@ public class Store {
 //		gs25.sectionA.items[2] = new Item();
 //		gs25.sectionA.items[2].name = "프링글스 오리지널";
 //		gs25.sectionA.items[2].price = 3500;
-//		gs25.sectionA.items[2].stock = 5;
+//		gs25.sectionA.	items[2].stock = 5;
 		
 		gs25.kim.name = "김경환";
 		gs25.kim.salary = 15000;

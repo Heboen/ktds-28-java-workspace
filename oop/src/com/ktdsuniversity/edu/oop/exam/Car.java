@@ -1,4 +1,4 @@
-package oop;
+package com.ktdsuniversity.edu.oop.exam;
 
 public class Car {
 	
@@ -6,6 +6,22 @@ public class Car {
 	//클래스의 인스턴스가 '독립적'으로 가지고 있는 정보들
 	boolean isEngineStart;
 	int speed;
+	int zero100seconds;
+	
+	/**
+	 * 생성자
+	 */
+	public Car(int zero100seconds) {
+		this.zero100seconds = zero100seconds;
+		System.out.println("생성자를 호출 했습니다.");
+		System.out.println(this);
+//		isEngineStart = true;
+//		speed = 10;
+		this.pressEngineStartButton();
+	}
+//	public Car(int zero100seconds) {
+//		zero100seconds = zero100seconds;
+//	}
 	
 	//인스턴스 메소드 (이하 메소드) 정의
 	//엔진 켜기 / 끄기
@@ -46,12 +62,14 @@ public class Car {
 		
 		//Car 클래스를 이용해 다음을 생성.
 		//Car 타입의 Kona 인스턴스를 생성
-		Car kona = new Car();
+		Car kona = new Car(8);
 		//Car 타입의 Carnival 인스턴스를 생성
-		Car carnival = new Car();
+		Car carnival = new Car(7);
+		
+		
 		
 		//kona의 시동을 켠다.
-		kona.pressEngineStartButton();
+//		kona.pressEngineStartButton();
 		
 		//브레이크 페달을 몇 차례 밟는다.
 		kona.pressBrakePedal(3);
