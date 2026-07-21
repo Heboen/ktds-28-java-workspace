@@ -24,24 +24,37 @@ public class Seller {
 	 */
 	int total;
 
+	/**
+	 * 상품 판매자의 판매 상품 등록
+	 * @param name 이름
+	 * @param price 상품 가격
+	 * @param stock 상품 재고
+	 */
 	public Seller(String name, int price, int stock) {
 		this.name = name;
 		this.price = price;
 		this.stock = stock;
 		this.total = 0;
+		//단 이 상황에서 단일 상품을 판매하는 것이기에 판매자가 아닌 단순 상품으로만 봐도 무방함
 	}
 	
-	public void sell(int amount) {
+	public int sell(int amount) {
 		if(this.stock == 0) {System.out.println("상품이 매진되었습니다.");}
 		if(amount > this.stock) {
 			System.out.println("상품이 " + this.stock + "개 만큼 있습니다.");
+			System.out.println(this.stock +"개 구매 완료");
 			this.total += this.stock * this.price;
 			this.stock -= this.stock;
+			return this.stock;
 		}
-		else if(amount < this.stock) {
+		else if(amount <= this.stock) {
+			System.out.println("상품이 " + this.stock + "개 만큼 있습니다.");
+			System.out.println(amount + "개 구매 완료");
 			this.stock -= amount;
 			this.total += amount*price;
+			return amount;
 		}
+		return 0;
 		
 	}
 	

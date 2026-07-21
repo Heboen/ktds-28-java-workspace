@@ -8,7 +8,7 @@ public class Test {
 		Car test = new Car(10);
 		
 		test.pressEngineStartButton();
-		System.out.println(test.zero100seconds);
+//		System.out.println(test.zero100seconds);
 		
 	}
 }
