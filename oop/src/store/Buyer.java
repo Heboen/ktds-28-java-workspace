@@ -42,6 +42,7 @@ public class Buyer {
 			int stuff = sc.nextInt();
 			
 			if(stuff == 0) {//구매자가 더 이상 구매하지 않을때
+				sc.close();
 				break;
 			}
 			
