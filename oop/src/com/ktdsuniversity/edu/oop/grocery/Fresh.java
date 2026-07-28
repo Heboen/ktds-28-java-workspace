@@ -17,7 +17,11 @@ public class Fresh extends Standard{
 		return this.storageTemp;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Fresh Food - name: " + super.getName() + 
+				", price: " + super.getPrice() + ", limit: " + this.limitDate + ", storageTempature: " + this.storageTemp;
+	}
 	
 
 }

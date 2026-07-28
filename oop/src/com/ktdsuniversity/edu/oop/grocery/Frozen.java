@@ -16,5 +16,11 @@ public class Frozen extends Standard{
 	public int getStorageTemp() {
 		return this.storageTemp;
 	}
+	
+	@Override
+	public String toString() {
+		return "Frozen Food - name: " + super.getName() + 
+				", price: " + super.getPrice() + ", limit: " + this.limitDate + ", storageTempature: " + this.storageTemp;
+	}
 
 }

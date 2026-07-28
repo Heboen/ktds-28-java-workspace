@@ -28,6 +28,10 @@ public class Alcohol extends Standard{
 		return this.alcoholPercent;
 	}
 	
+	@Override
+	public String toString() {
+		return "Alcohol Drink - name: " + super.getName() + ", price: " 
+	+ super.getPrice() + ", limit-age: " + this.limitAge + ", storageTempature: " + this.storageTemp + ", alocohol-percen: " + this.alcoholPercent;
 	
-
+	}
 }

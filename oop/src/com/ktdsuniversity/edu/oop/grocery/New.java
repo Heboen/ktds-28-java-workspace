@@ -1,5 +1,7 @@
 package com.ktdsuniversity.edu.oop.grocery;
 
+import java.util.Arrays;
+
 public class New implements Customer{
 
 		private String name;
@@ -26,7 +28,7 @@ public class New implements Customer{
 		public void purchase(Standard[] standard) {
 			int total = 0;
 			Standard goods = null;
-			
+			this.basket = standard;
 			for(int i = 0; i < standard.length; i++) {
 				goods = standard[i];
 				if(goods instanceof Alcohol alcohol) {
@@ -49,10 +51,17 @@ public class New implements Customer{
 				System.out.println("잔액 부족으로 구매가 불가능합니다.");
 			}
 			else {
+				System.out.println("결제 전 잔액: " + this.getWallet());
 				this.wallet -= total;
 				System.out.println("결제 후 남은 금액: " + this.getWallet());
+				System.out.println();
 			}
 		}
 		
+		@Override
+		public String toString() {
+			return "New Customer: name: " + this.name + ", money: " + this.wallet + ", basket: " + Arrays.toString(this.basket)
+			+ ", age: " + this.age; 
+		}
 		
 }

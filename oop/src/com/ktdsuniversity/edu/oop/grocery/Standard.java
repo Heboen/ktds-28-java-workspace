@@ -19,5 +19,10 @@ public class Standard{
 	public int getPrice() {
 		return this.price;
 	}
+	
+	@Override
+	public String toString() {
+		return "Standard Food - name: " + this.name + ", price: " + this.price;
+	}
 
 }
