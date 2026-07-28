@@ -56,7 +56,11 @@ public class Car {
 		}
 	}
 	
-	
+@Override
+public String toString() {
+	//출력의 형태를 정의
+	return this.zero100seconds + " ";
+}
 	 
 	public static void main(String[] args) {
 		
@@ -66,7 +70,14 @@ public class Car {
 		//Car 타입의 Carnival 인스턴스를 생성
 		Car carnival = new Car(7);
 		
+		System.out.println(kona);
+		System.out.println(carnival);
+		String name = "adqwekdsvkhe";
+		System.out.println(name);
 		
+		StringBuffer buffer = new StringBuffer();
+		buffer.append("eijsdkjawa");
+		System.out.println(buffer);
 		
 		//kona의 시동을 켠다.
 //		kona.pressEngineStartButton();
