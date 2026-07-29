@@ -32,16 +32,16 @@ public class ComicsBookCafe {
 		for(int i = 0; i<this.comicsbook.length; i++) {
 			
 			ComicsBook book = this.comicsbook[i];
-			String state = "대여 가능";
-			if(book.isBookStatus()) {
-				state = "대여 중";
-			}
-			System.out.println("만화잭 번호: " + i);
-			System.out.println("만화책 이름: "+ book.getName());
-			System.out.println("만화책 대여 상태 " + state);
-			System.out.println("만화책 대여비 " + book.getBookCost());
-			
-			
+			if(book != null) {
+				String state = "대여 가능";
+				if(book.isBookStatus()) {
+					state = "대여 중";
+				}
+				System.out.println("만화잭 번호: " + i);
+				System.out.println("만화책 이름: "+ book.getName());
+				System.out.println("만화책 대여 상태 " + state);
+				System.out.println("만화책 대여비 " + book.getBookCost() + "\n");
+			}			
 		}
 	}
 	

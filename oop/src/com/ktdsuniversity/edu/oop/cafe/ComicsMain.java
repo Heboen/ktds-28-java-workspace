@@ -26,7 +26,7 @@ public class ComicsMain {
 //			cs.ReturnBook(bookcafe.getComicbook()[num],num);
 //		}
 		
-		ComicsBook[] books = new ComicsBook[3];
+		ComicsBook[] books = new ComicsBook[10];
 		books[0] = new ComicsBook("슬램덩크 1권", false, 500);
 		books[1] = new ComicsBook("슬램덩크 2권", false, 500);
 		books[2] = new ComicsBook("슬램덩크 3권", false, 500);
