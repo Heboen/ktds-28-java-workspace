@@ -1,5 +1,4 @@
 package restaurant;
-import java.util.Scanner;
 /**
  * 식당
  */

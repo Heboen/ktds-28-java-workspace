@@ -14,6 +14,13 @@ public class Goods {
 		return price;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Goods othergoods) {
+			return this.name.equals(othergoods.name) && this.price == othergoods.price;
+		}
+		return false;
+	}
 	
 	
 }

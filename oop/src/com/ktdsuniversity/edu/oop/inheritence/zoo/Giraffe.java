@@ -1,5 +1,6 @@
 package com.ktdsuniversity.edu.oop.inheritence.zoo;
 
+
 public class Giraffe extends Animal {
 	
 	public Giraffe(String name, int age, String sex, float weight, float tall, String species) {

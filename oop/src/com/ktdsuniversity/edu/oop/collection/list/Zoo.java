@@ -1,5 +1,11 @@
-package com.ktdsuniversity.edu.oop.inheritence.zoo;
+package com.ktdsuniversity.edu.oop.collection.list;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.ktdsuniversity.edu.oop.inheritence.zoo.Animal;
+import com.ktdsuniversity.edu.oop.inheritence.zoo.Giraffe;
+import com.ktdsuniversity.edu.oop.inheritence.zoo.Penguin;
+import com.ktdsuniversity.edu.oop.inheritence.zoo.Tiger;
 
 public class Zoo {
 
@@ -49,28 +55,28 @@ public class Zoo {
 	
 	
 public static void main(String[] args) {
-	Animal[] animals = new Animal[3];
-	animals[0] = new Penguin("핑구", 3, "수컷", 15, 80, "펭귄");
-	animals[1] = new Tiger("루나", 8, "암컷", 70, 170, "호랑이");
-	animals[2] = new Giraffe("키링", 6, "수컷", 15, 380, "기린");
+	List<Animal> animals = new ArrayList<>();
+	animals.add(new Penguin("핑구", 3, "수컷", 15, 80, "펭귄"));
+	animals.add(new Tiger("루나", 8, "암컷", 70, 170, "호랑이"));
+	animals.add(new Giraffe("키링", 6, "수컷", 15, 380, "기린"));
 	
-	for(int i = 0; i < animals.length; i++) {
-		enterArea(animals[i]);
-		seeAnimals(animals[i]);
+	for(int i = 0; i < animals.size(); i++) {
+		enterArea(animals.get(i));
+		seeAnimals(animals.get(i));
 		System.out.println();
-		animals[i].explain();
+		animals.get(i).explain();
 		System.out.println();
-//		Howling(animals[i]);
-		Tigers(animals[i]);
-		Kick(animals[i]);
-		Swimming(animals[i]);
-//		Feathering(animals[i]);
-		animals[i].move();
-		animals[i].drink();
+//		Howling(animals.get(i));
+		Tigers(animals.get(i));
+		Kick(animals.get(i));
+		Swimming(animals.get(i));
+//		Feathering(animals.get(i));
+		animals.get(i).move();
+		animals.get(i).drink();
 		System.out.println();
-		animals[i].eat();
-		animals[i].play();
-		animals[i].sleep();
+		animals.get(i).eat();
+		animals.get(i).play();
+		animals.get(i).sleep();
 		System.out.println("==========================================\n");
 	}
 }

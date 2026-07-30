@@ -1,5 +1,6 @@
 package com.ktdsuniversity.edu.oop.inheritence.zoo;
 
+
 public class Penguin extends Animal{
 	
 	public Penguin(String name, int age, String sex, float weight, float tall, String species) {
