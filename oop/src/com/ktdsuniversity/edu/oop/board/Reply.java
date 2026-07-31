@@ -7,7 +7,7 @@ public class Reply {
 	private String replyDate;
 	private int recommend;
 	
-	public Reply(String replyDetail, String writer, String replyDate, int recommend) {
+	public Reply(String replyDetail, String writer, String replyDate) {
 		this.replyDetail = replyDetail;
 		this.writer = writer;
 		this.replyDate = replyDate;
@@ -30,7 +30,9 @@ public class Reply {
 		return this.recommend;
 	}
 	
-	
+	public void replyRecommend() {
+		this.recommend+=1;
+	}
 	
 	
 

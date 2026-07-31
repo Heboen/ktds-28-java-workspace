@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 import com.ktdsuniversity.edu.oop.board.exceptions.ArticleException;
 import com.ktdsuniversity.edu.oop.board.exceptions.ArticleWriterException;
-
-
+/**
+ * 게시글
+ */
 public class Article{
 	private String title;
 	private String writer;
@@ -25,7 +26,41 @@ public class Article{
 		this.reply = new ArrayList<>();
 	}
 
+	public String getTitle() {
+		return title;
+	}
 
+	public String getWriter() {
+		return writer;
+	}
+
+	public String getPostdate() {
+		return postdate;
+	}
+
+	public int getView() {
+		return view;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public List<Reply> getReply() {
+		return reply;
+	}
+
+	public void readpost() {
+		this.view += 1;		
+	}
+	public void modify(String modtitle, String detail) {
+		this.title = modtitle;
+		this.details = detail;
+	}
+	
+	public void addReply(Reply repl) {
+		this.reply.add(repl);
+	}
 	
 	
 }
