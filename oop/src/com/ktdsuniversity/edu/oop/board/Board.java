@@ -16,15 +16,17 @@ public class Board implements ArticleService {
 	public Board() {
 		this.board = new ArrayList<>();
 	}
-
+	
+	/**게시글 추천*/
 	public void addArticle(Article article) {
 		if (article != null) {
 			this.board.add(article);
 		}
 	}
 
+	/** 날짜 형식 검증 */
 	private String validate(String date) {
-		
+
 		if (!date.matches("\\d{4}\\-(0?[1-9]|1[012])\\-(0?[012][0-9]|3[01])")) {
 			System.out.println("날짜의 형식이 알맞지 않습니다. 다시 입력해주세요");
 			System.out.print("YYYY-MM-DD >> ");
@@ -34,6 +36,7 @@ public class Board implements ArticleService {
 		return date;
 	}
 
+	/**게시글 작성하기()*/
 	@Override
 	public void write() {
 		
@@ -42,14 +45,13 @@ public class Board implements ArticleService {
 		System.out.print("제목을 입력해주세요>> ");
 
 		title = sc.nextLine();
-		title.trim();
-		if (title == "" || title.length() > 30) {
+		if (title.isBlank()|| title.length() > 30) {
 			ArticleException ae = new ArticleException("제목의 형식이 바르지 않습니다. 최소 1글자 최대30글자까지 작성해주십시오.");
 			throw ae;
 		} else {
 			System.out.print("이름을 입력해주세요. >>");
 			name = sc.nextLine();
-			if (name == "") {
+			if (name.isBlank()) {
 				ArticleWriterException awe = new ArticleWriterException("이름을 입력하지 않았습니다.");
 				throw awe;
 			}
@@ -64,6 +66,7 @@ public class Board implements ArticleService {
 		this.board.add(new Article(title, name, date, detail));
 	}
 
+	/**원하는 게시글*/
 	@Override
 	public void delete(int articlenum) {
 		if (articlenum < 0 || this.board.size() <= articlenum) {
@@ -75,6 +78,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**모든 게시글 출력*/
 	@Override
 	public void display() {
 		if (this.board.size() == 0) {
@@ -87,6 +91,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**원하는 게시글 열람*/
 	@Override
 	public void displayWithNum(int articlenum) {
 
@@ -96,19 +101,12 @@ public class Board implements ArticleService {
 			Article atc = this.board.get(articlenum);
 			if (this.board.get(articlenum) != null) {
 				atc.readpost();
-				System.out.println("제목: " + atc.getTitle());
-				System.out.println("작성자: " + atc.getWriter());
-				System.out.println("작성일: " + atc.getPostdate());
-				System.out.println("내용: " + atc.getDetails());
-				System.out.println("조회수: " + atc.getView());
-				System.out.println("댓글 목록: ");
-				for (int i = 0; i < atc.getReply().size(); i++) {
-					System.out.println(">> " + i + ". " + atc.getReply().get(i).getReplyDetail() + "(" + atc.getReply().get(i).getRecommend() + ")");
-				}
+				atc.printArticle();
 			}
 		}
 	}
 
+	/**원하는 게시글 수정*/
 	@Override
 	public void modifyWithNum(int articlenum) {
 		String modtitle, detail;
@@ -126,6 +124,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**게시글 개수 출력*/
 	@Override
 	public void articleCount() {
 		int cnt = this.board.size();
@@ -135,7 +134,8 @@ public class Board implements ArticleService {
 			System.out.println(cnt + "개의 게시글이 등록되었습니다.");
 		}
 	}
-
+	
+	/**게시글에 댓글 추가*/
 	@Override
 	public void replying(int articlenum) {
 		
@@ -152,8 +152,13 @@ public class Board implements ArticleService {
 
 				System.out.println("댓글 작성자 이름을 입력해주세요 >> ");
 				String replwriter = sc.nextLine();
+				if (replwriter.isBlank()) {
+					ArticleWriterException awe = new ArticleWriterException("이름을 입력하지 않았습니다.");
+					throw awe;
+				}
 
 				System.out.println("댓글 작성 날짜를 입력해주세요 >> ");
+				System.out.print("YYYY-MM-DD >>");
 				String repldate = sc.nextLine();
 				repldate = validate(repldate);
 				atc.addReply(new Reply(repl, replwriter, repldate));
@@ -161,6 +166,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**원하는 게시글의 댓글을 삭제*/
 	@Override
 	public void deleteReply(int articlenum, int replynum) {
 		if (this.board.size() == 0) {
@@ -183,6 +189,7 @@ public class Board implements ArticleService {
 		
 	}
 
+	/**댓글 추천*/
 	@Override
 	public void recommendReply(int articlenum, int replnum) {
 		if (articlenum < 0 || this.board.size() <= articlenum) {
@@ -197,6 +204,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**게시글 검색*/
 	@Override
 	public void searchTitle(String title) {
 		if (this.board.size() == 0) {
@@ -219,6 +227,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**게시글 전체 삭제*/
 	@Override
 	public void clearAticle() {
 		if (this.board.size() == 0) {
@@ -228,6 +237,7 @@ public class Board implements ArticleService {
 		}
 	}
 
+	/**댓글 전체 삭제*/
 	@Override
 	public void clearReply(int articlenum) {
 		if (articlenum < 0 || this.board.size() <= articlenum) {

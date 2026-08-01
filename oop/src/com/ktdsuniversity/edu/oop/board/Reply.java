@@ -1,5 +1,9 @@
 package com.ktdsuniversity.edu.oop.board;
 
+
+/**
+ * 댓글
+ */
 public class Reply {
 	
 	private String replyDetail;
@@ -33,7 +37,14 @@ public class Reply {
 	public void replyRecommend() {
 		this.recommend+=1;
 	}
+	public void printReply() {
+		System.out.println("댓글 작성자: " + this.writer);
+		System.out.println("댓글 작성 일자: " + this.replyDate);
+		System.out.println("댓글 내용: "  + this.replyDetail);
+		System.out.println("추천 수: " + this.recommend + "\n");
+	}
 	
+
 	
 
 }

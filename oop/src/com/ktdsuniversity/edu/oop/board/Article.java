@@ -2,10 +2,7 @@ package com.ktdsuniversity.edu.oop.board;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import com.ktdsuniversity.edu.oop.board.exceptions.ArticleException;
-import com.ktdsuniversity.edu.oop.board.exceptions.ArticleWriterException;
 /**
  * 게시글
  */
@@ -27,27 +24,27 @@ public class Article{
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public String getWriter() {
-		return writer;
+		return this.writer;
 	}
 
 	public String getPostdate() {
-		return postdate;
+		return this.postdate;
 	}
 
 	public int getView() {
-		return view;
+		return this.view;
 	}
 
 	public String getDetails() {
-		return details;
+		return this.details;
 	}
 
 	public List<Reply> getReply() {
-		return reply;
+		return this.reply;
 	}
 
 	public void readpost() {
@@ -61,6 +58,20 @@ public class Article{
 	public void addReply(Reply repl) {
 		this.reply.add(repl);
 	}
+	public void printArticle() {
+		
+		System.out.println("제목: " + this.getTitle());
+		System.out.println("작성자: " + this.getWriter());
+		System.out.println("작성일: " + this.getPostdate());
+		System.out.println("내용: " + this.getDetails());
+		System.out.println("조회수: " + this.getView() + "\n");
+		System.out.println("=".repeat(5)+"댓글"+"=".repeat(5));
+		for (int i = 0; i < this.getReply().size(); i++) {
+			this.getReply().get(i).printReply();
+		}
+	}
 	
+	
+
 	
 }
