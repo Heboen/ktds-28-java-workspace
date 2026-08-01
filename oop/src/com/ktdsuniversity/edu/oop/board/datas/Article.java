@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.oop.board;
+package com.ktdsuniversity.edu.oop.board.datas;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.ktdsuniversity.edu.oop.board.datas.Article;
+import com.ktdsuniversity.edu.oop.board.datas.Reply;
 import com.ktdsuniversity.edu.oop.board.exceptions.ArticleException;
 import com.ktdsuniversity.edu.oop.board.exceptions.ArticleWriterException;
+import com.ktdsuniversity.edu.oop.board.service.ArticleService;
 
 /**
  * 게시판
@@ -229,7 +232,7 @@ public class Board implements ArticleService {
 
 	/**게시글 전체 삭제*/
 	@Override
-	public void clearAticle() {
+	public void clearArticle() {
 		if (this.board.size() == 0) {
 			System.out.println("제거할 게시글이 없습니다.");
 		} else {

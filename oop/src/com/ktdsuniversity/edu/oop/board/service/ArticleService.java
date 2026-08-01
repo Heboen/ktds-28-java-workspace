@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.oop.board;
+package com.ktdsuniversity.edu.oop.board.service;
 
 /**
  * 게시판의 기능
@@ -15,6 +15,6 @@ public interface ArticleService {
 	void deleteReply(int articlenum, int replynum);
 	void recommendReply(int articlenum, int replnum);
 	void searchTitle(String title);
-	void clearAticle();
+	void clearArticle();
 	void clearReply(int articlenum);
 }
