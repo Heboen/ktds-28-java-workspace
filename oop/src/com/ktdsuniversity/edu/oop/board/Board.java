@@ -58,22 +58,22 @@ public class Board implements ArticleService {
 			ArticleException ae = new ArticleException("제목의 형식이 바르지 않습니다. 최소 1글자 최대30글자까지 작성해주십시오.");
 			throw ae;
 //			throw new ArticleException("제목의 형식이 바르지 않습니다. 최소 1글자 최대 30글자까지 작성해주십시오.");
-		} else {
-			System.out.print("이름을 입력해주세요. >>");
-			name = sc.nextLine();
-			name = name.trim();
-			if (name.isBlank()) {
-				ArticleWriterException awe = new ArticleWriterException("이름을 입력하지 않았습니다.");
-				throw awe;
-			}
-			System.out.println("작성일을 입력해주세요");
-			System.out.print("YYYY-MM-DD >>");
-			date = sc.nextLine();
-			date = validate(date);
-
-			System.out.println("내용을 입력해주세요 >>");
-			detail = sc.nextLine();
 		}
+		System.out.print("이름을 입력해주세요. >>");
+		name = sc.nextLine();
+		name = name.trim();
+		if (name.isBlank()) {
+			ArticleWriterException awe = new ArticleWriterException("이름을 입력하지 않았습니다.");
+			throw awe;
+		}
+		System.out.println("작성일을 입력해주세요");
+		System.out.print("YYYY-MM-DD >>");
+		date = sc.nextLine();
+		date = validate(date);
+
+		System.out.println("내용을 입력해주세요 >>");
+		detail = sc.nextLine();
+
 		this.board.add(new Article(title, name, date, detail));
 	}
 
@@ -82,11 +82,12 @@ public class Board implements ArticleService {
 	public void delete(int articleNum) {
 		if (articleNum < 0 || this.board.size() <= articleNum) {
 			System.out.println("존재하지 않은 게시글입니다.");
-		} else {
-			if (this.board.get(articleNum) != null) {
-				this.board.get(articleNum).getReply().clear();
-				this.board.remove(articleNum);
-			}
+			return;
+		}
+		if (this.board.get(articleNum) != null) {
+			this.board.get(articleNum).getReply().clear();
+			this.board.remove(articleNum);
+
 		}
 	}
 
@@ -95,12 +96,13 @@ public class Board implements ArticleService {
 	public void display() {
 		if (this.board.size() == 0) {
 			System.out.println("아직 등록된 게시글이 없습니다.");
-		} else {
-			for (int i = 0; i < this.board.size(); i++) {
-				System.out.println(
-						i + ". " + this.board.get(i).getTitle() + " (" + this.board.get(i).getReply().size() + ")");
-			}
+			return;
 		}
+		for (int i = 0; i < this.board.size(); i++) {
+			System.out.println(
+					i + ". " + this.board.get(i).getTitle() + " (" + this.board.get(i).getReply().size() + ")");
+		}
+
 	}
 
 	/** 원하는 게시글 열람 */
@@ -109,13 +111,14 @@ public class Board implements ArticleService {
 
 		if (articleNum < 0 || this.board.size() <= articleNum) {
 			System.out.println("잘못된 게시글 번호입니다.");
-		} else {
-			Article atc = this.board.get(articleNum);
-			if (this.board.get(articleNum) != null) {
-				atc.readArticle();
-				atc.printArticle();
-			}
+			return;
 		}
+		Article atc = this.board.get(articleNum);
+		if (this.board.get(articleNum) != null) {
+			atc.readArticle();
+			atc.printArticle();
+		}
+
 	}
 
 	/** 원하는 게시글 수정 */
@@ -124,20 +127,21 @@ public class Board implements ArticleService {
 		String modtitle, detail;
 		if (articleNum < 0 || this.board.size() <= articleNum) {
 			System.out.println("잘못된 게시글 번호입니다.");
-		} else {
-			Article atc = this.board.get(articleNum);
-			if (atc != null) {
-				System.out.print("수정할 게시글 제목을 입력해주세요 >> ");
-				modtitle = sc.nextLine();
-				modtitle = modtitle.trim();
-				if (modtitle.isBlank() || modtitle.length() > 30) {
-					ArticleException ae = new ArticleException("제목의 형식이 바르지 않습니다. 최소 1글자 최대30글자까지 작성해주십시오.");
-					throw ae;
-				}
-				System.out.print("수정할 게시글 내용을 입력해주세요 >> ");
-				detail = sc.nextLine();
-				atc.modify(modtitle, detail);
+			return;
+		}
+		Article atc = this.board.get(articleNum);
+		if (atc != null) {
+			System.out.print("수정할 게시글 제목을 입력해주세요 >> ");
+			modtitle = sc.nextLine();
+			modtitle = modtitle.trim();
+			if (modtitle.isBlank() || modtitle.length() > 30) {
+				ArticleException ae = new ArticleException("제목의 형식이 바르지 않습니다. 최소 1글자 최대30글자까지 작성해주십시오.");
+				throw ae;
 			}
+			System.out.print("수정할 게시글 내용을 입력해주세요 >> ");
+			detail = sc.nextLine();
+			atc.modify(modtitle, detail);
+
 		}
 	}
 
@@ -147,9 +151,10 @@ public class Board implements ArticleService {
 		int cnt = this.board.size();
 		if (cnt == 0) {
 			System.out.println("등록된 게시글이 없습니다.");
-		} else {
-			System.out.println(cnt + "개의 게시글이 등록되었습니다.");
+			return;
 		}
+		System.out.println(cnt + "개의 게시글이 등록되었습니다.");
+
 	}
 
 	/** 게시글에 댓글 추가 */
@@ -158,29 +163,30 @@ public class Board implements ArticleService {
 
 		if (articleNum < 0 || this.board.size() <= articleNum) {
 			System.out.println("잘못된 게시글 번호입니다.");
-		} else {
-			Article atc = this.board.get(articleNum);
-			if (atc.getReply().size() >= 10) {
-				System.out.println("댓글을 더 이상 등록할 수 없습니다.");
-			} else {
-				System.out.println("댓글 내용을 입력해주세요 >> ");
-				String repl = sc.nextLine();
-
-				System.out.println("댓글 작성자 이름을 입력해주세요 >> ");
-				String replwriter = sc.nextLine();
-				replwriter = replwriter.trim();
-				if (replwriter.isBlank()) {
-					ArticleWriterException awe = new ArticleWriterException("이름을 입력하지 않았습니다.");
-					throw awe;
-				}
-
-				System.out.println("댓글 작성 날짜를 입력해주세요 >> ");
-				System.out.print("YYYY-MM-DD >>");
-				String repldate = sc.nextLine();
-				repldate = validate(repldate);
-				atc.addReply(new Reply(repl, replwriter, repldate));
-			}
+			return;
 		}
+		Article atc = this.board.get(articleNum);
+		if (atc.getReply().size() >= 10) {
+			System.out.println("댓글을 더 이상 등록할 수 없습니다.");
+			return;
+		}
+		System.out.println("댓글 내용을 입력해주세요 >> ");
+		String repl = sc.nextLine();
+
+		System.out.println("댓글 작성자 이름을 입력해주세요 >> ");
+		String replwriter = sc.nextLine();
+		replwriter = replwriter.trim();
+		if (replwriter.isBlank()) {
+			ArticleWriterException awe = new ArticleWriterException("이름을 입력하지 않았습니다.");
+			throw awe;
+		}
+
+		System.out.println("댓글 작성 날짜를 입력해주세요 >> ");
+		System.out.print("YYYY-MM-DD >>");
+		String repldate = sc.nextLine();
+		repldate = validate(repldate);
+		atc.addReply(new Reply(repl, replwriter, repldate));
+
 	}
 
 	/** 원하는 게시글의 댓글을 삭제 */
@@ -188,22 +194,21 @@ public class Board implements ArticleService {
 	public void deleteReply(int articleNum, int replyNum) {
 		if (this.board.size() == 0) {
 			System.out.println("게시글이 존재하지 않습니다.");
-		} else {
-			if (articleNum < 0 || this.board.size() <= articleNum) {
-				System.out.println("잘못된 게시글 번호입니다.");
-			} else {
-				Article atc = this.board.get(articleNum);
-
-				if (replyNum < 0 || atc.getReply().size() <= replyNum) {
-					System.out.println("잘못된 댓글 번호입니다.");
-				} else {
-					List<Reply> rp = atc.getReply();
-					
-					rp.remove(replyNum);
-				}
-			}
-
+			return;
 		}
+		if (articleNum < 0 || this.board.size() <= articleNum) {
+			System.out.println("잘못된 게시글 번호입니다.");
+			return;
+		}
+		Article atc = this.board.get(articleNum);
+
+		if (replyNum < 0 || atc.getReply().size() <= replyNum) {
+			System.out.println("잘못된 댓글 번호입니다.");
+			return;
+		}
+		List<Reply> rp = atc.getReply();
+
+		rp.remove(replyNum);
 
 	}
 
@@ -212,14 +217,14 @@ public class Board implements ArticleService {
 	public void recommendReply(int articleNum, int replNum) {
 		if (articleNum < 0 || this.board.size() <= articleNum) {
 			System.out.println("잘못된 게시글 번호입니다.");
-		} else {
-			Article atc = this.board.get(articleNum);
-			if (replNum < 0 || atc.getReply().size() <= replNum) {
-				System.out.println("잘못된 댓글 번호입니다.");
-			} else {
-				atc.getReply().get(replNum).replyRecommend();
-			}
+			return;
 		}
+		Article atc = this.board.get(articleNum);
+		if (replNum < 0 || atc.getReply().size() <= replNum) {
+			System.out.println("잘못된 댓글 번호입니다.");
+			return;
+		}
+		atc.getReply().get(replNum).replyRecommend();
 	}
 
 	/** 게시글 검색 */
@@ -231,7 +236,6 @@ public class Board implements ArticleService {
 		}
 		int cnt = 0;
 		for (int i = 0; i < this.board.size(); i++) {
-
 			if (this.board.get(i) != null) {
 				String articletitle = this.board.get(i).getTitle();
 				if (articletitle.contains(title)) {
@@ -250,13 +254,13 @@ public class Board implements ArticleService {
 	public void clearArticle() {
 		if (this.board.size() == 0) {
 			System.out.println("제거할 게시글이 없습니다.");
-		} else {
-			for (int i = 0; i < this.board.size(); i++) {
-				this.board.get(i).getReply().clear();
-			}
-			System.out.println(this.board.size()+ "개의 게시글을 삭제했습니다.");
-			this.board.clear();
+			return;
 		}
+		for (int i = 0; i < this.board.size(); i++) {
+			this.board.get(i).getReply().clear();
+		}
+		System.out.println(this.board.size() + "개의 게시글을 삭제했습니다.");
+		this.board.clear();
 	}
 
 	/** 댓글 전체 삭제 */
@@ -264,11 +268,10 @@ public class Board implements ArticleService {
 	public void clearReply(int articleNum) {
 		if (articleNum < 0 || this.board.size() <= articleNum) {
 			System.out.println("잘못된 게시글 번호입니다.");
-		} else {
-			List<Reply> reply = this.board.get(articleNum).getReply();
-			System.out.println(reply.size() + "개의 댓글이 삭제되었습니다.");
-			reply.clear();
+			return;
 		}
+		List<Reply> reply = this.board.get(articleNum).getReply();
+		System.out.println(reply.size() + "개의 댓글이 삭제되었습니다.");
+		reply.clear();
 	}
-
 }
