@@ -14,7 +14,7 @@ import com.ktdsuniversity.edu.oop.board.service.ArticleService;
  * 게시판
  */
 public class Board implements ArticleService {
-	List<Article> board;
+	private List<Article> board;
 	Scanner sc = new Scanner(System.in);
 
 //	public static final Scanner CONSOLE;
