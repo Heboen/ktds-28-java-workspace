@@ -7,14 +7,14 @@ public interface ArticleService {
 
 	void write();
 	void display();
-	void delete(int articlenum);
-	void displayWithNum(int articlenum);
-	void modifyWithNum(int articlenum);
+	void delete(int articleNum);
+	void displayWithNum(int articleNum);
+	void modifyWithNum(int articleNum);
 	void articleCount();
-	void replying(int articlenum);
-	void deleteReply(int articlenum, int replynum);
-	void recommendReply(int articlenum, int replnum);
+	void replying(int articleNum);
+	void deleteReply(int articleNum, int replyNum);
+	void recommendReply(int articleNum, int replNum);
 	void searchTitle(String title);
 	void clearArticle();
-	void clearReply(int articlenum);
+	void clearReply(int articleNum);
 }
