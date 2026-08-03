@@ -47,7 +47,7 @@ public class Article{
 		return this.reply;
 	}
 
-	public void readPost() {
+	public void readArticle() {
 		this.view += 1;		
 	}
 	public void modify(String modtitle, String detail) {

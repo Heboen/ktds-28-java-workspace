@@ -25,7 +25,7 @@ public class Board implements ArticleService {
 		this.board = new ArrayList<>();
 	}
 
-	/** 게시글 추천 */
+	/** 게시글 추가 */
 	public void addArticle(Article article) {
 		if (article != null) {
 			this.board.add(article);
@@ -112,7 +112,7 @@ public class Board implements ArticleService {
 		} else {
 			Article atc = this.board.get(articleNum);
 			if (this.board.get(articleNum) != null) {
-				atc.readPost();
+				atc.readArticle();
 				atc.printArticle();
 			}
 		}
