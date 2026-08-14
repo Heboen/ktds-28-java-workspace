@@ -17,7 +17,7 @@ public class Friends {
 	}
 
 	public Friend get(int index) {
-		if (index >= this.friendList.size() && index < 0) {
+		if (index >= this.friendList.size() || index < 0) {
 			return null;
 		}
 		return this.friendList.get(index);
