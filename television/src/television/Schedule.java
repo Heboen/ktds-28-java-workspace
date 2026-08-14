@@ -43,10 +43,4 @@ public class Schedule {
 			System.out.println(lastShow.getName());
 		}
 	}
-	
-	public void print() {
-		for(int i = 0; i < this.tvSchedule.size(); i++) {
-			System.out.println(this.tvSchedule.get(i));
-		}
-	}
 }

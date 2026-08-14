@@ -22,9 +22,4 @@ public class TvShow {
 		return this.startTime;
 	}
 	
-	@Override
-	public String toString() {
-		return this.getName() + " " + this.getStartTime();
-	}
-	
 }

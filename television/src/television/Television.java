@@ -23,7 +23,5 @@ public class Television {
 		LocalTime now = LocalTime.now();
 		
 		television.nowPlayingShow(now);
-		
-//		television.print();
 	}
 }
