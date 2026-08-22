@@ -2,6 +2,7 @@ package lottery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lottery {
 	public static void main(String[] args) {
@@ -14,6 +15,10 @@ public class Lottery {
 				lotto.add(num);
 			}
 		}
-		System.out.println(lotto);
+		String str = lotto.stream() //Stream<Integer>
+							.map(String::valueOf)//Stream<String>
+							.collect(Collectors.joining(", ")); //String
+		
+		System.out.println(str);
 	}
 }

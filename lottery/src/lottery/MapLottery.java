@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class MapLottery {
 	public static List<Integer> lottery() {
@@ -25,13 +26,22 @@ public class MapLottery {
 
 		lotteryMap.put(round, lotto);
 
-		System.out.println(round + "회차 ==> " + lotteryMap.get(round));
+		System.out.print(round + "회차 ==> ");
+		System.out.println(lotteryMap.get(round).stream() // Stream<Integer>
+						.map(String::valueOf) // Stream<String>
+						.collect(Collectors.joining(", "))) //String
+						;
 	}
 
 	public static void printLottery(Map<Integer, List<Integer>> lotteryMap) {
 		System.out.println();
 		for (int r : lotteryMap.keySet()) {
-			System.out.println(r + "회차 ==> " + lotteryMap.get(r));
+			System.out.print(r + "회차 ==> ");
+			System.out.println(lotteryMap.get(r).stream() // Stream<Integer>
+							.map(String::valueOf) // Stream<String>
+							.collect(Collectors.joining(", "))) //String
+							;
+			
 		}
 	}
 
