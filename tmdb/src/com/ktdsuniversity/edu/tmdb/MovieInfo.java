@@ -92,11 +92,11 @@ public class MovieInfo {
 
 	public void setBakcgrounds(MvVO movie) {
 		StringBuffer query = new StringBuffer();
-		query.append("	SELECT B.BCKGRND_ID          ");
-		query.append("		 , B.BCKGRND_URL             ");
-		query.append("    FROM BCKGRND B               ");
-		query.append("   INNER JOIN MV M               ");
-		query.append(" 		ON B.MV_ID = M.MV_ID         ");
+		query.append("	SELECT B.BCKGRND_ID       ");
+		query.append("		 , B.BCKGRND_URL      ");
+		query.append("    FROM BCKGRND B          ");
+		query.append("   INNER JOIN MV M    	  ");
+		query.append(" 		ON B.MV_ID = M.MV_ID  ");
 		query.append("   WHERE B.MV_ID = ?        ");
 		
 		List<BckgrndVO> bckgrnds = this.connector.selectBuilder(BckgrndVO.class, query)
@@ -153,23 +153,23 @@ public class MovieInfo {
 	public void setFilmmakers(MvVO movie) {
 		// 제작진 조회 Mv has a Flmmkr
 		final StringBuffer query = new StringBuffer();
-		query.append("	SELECT FLMMKR_ID    ");
-		query.append("	 	 , INVLVD_ID    ");
-		query.append("	 	 , MV_ID        ");
-		query.append("	 	 , FLMMKR_RL    ");
-		query.append("	 	 , FLMMKR_PRT   ");
-		query.append("    FROM FLMMKR       ");
-		query.append(" 	 WHERE MV_ID = ?    ");
+		query.append("	SELECT FLMMKR_ID  ");
+		query.append("	 	 , INVLVD_ID  ");
+		query.append("	 	 , MV_ID      ");
+		query.append("	 	 , FLMMKR_RL  ");
+		query.append("	 	 , FLMMKR_PRT ");
+		query.append("    FROM FLMMKR     ");
+		query.append(" 	 WHERE MV_ID = ?  ");
 		List<FlmmkrVO> flmmkrs = this.connector.selectBuilder(FlmmkrVO.class, query)
 											   .setParams(pstmt -> pstmt.setString(1, movie.getMvId()))
 											   .selectList();
 		movie.setFlmmkrList(flmmkrs);
 		query.delete(0, query.length());
-		query.append("	SELECT INVLVD_ID              ");
-		query.append("	 , INVLVD_NAME                ");
-		query.append("	 , INVLVD_PRFL                ");
-		query.append("  FROM INVLVD                   ");
-		query.append(" WHERE INVLVD_ID =          ?   ");
+		query.append("	SELECT INVLVD_ID   ");
+		query.append("	 , INVLVD_NAME     ");
+		query.append("	 , INVLVD_PRFL     ");
+		query.append("  FROM INVLVD        ");
+		query.append(" WHERE INVLVD_ID = ? ");
 		// Flmmkr has a Invlvd
 		flmmkrs.forEach(fmkr -> {
 			InvlvdVO involved = this.connector.selectBuilder(InvlvdVO.class, query)
@@ -189,7 +189,7 @@ public class MovieInfo {
 
 		System.out.println("장르명");
 		movie.getGnrList().forEach(gnr -> System.out.println(gnr.getNm()));
-
+		System.out.println("=".repeat(10));
 		System.out.println("키워드");
 		movieInfo.setKeywords(movie);
 		movie.getKwrdList().forEach(kwrd -> System.out.println(kwrd.getKwrdNm()));
