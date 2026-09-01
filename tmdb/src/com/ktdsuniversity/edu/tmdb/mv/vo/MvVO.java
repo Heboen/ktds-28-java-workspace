@@ -118,7 +118,7 @@ public class MvVO {
 		return this.xUrl;
 	}
 
-	public void setxUrl(String xUrl) {
+	public void setXUrl(String xUrl) {
 		this.xUrl = xUrl;
 	}
 
@@ -236,8 +236,22 @@ public class MvVO {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "mvId: " + this.mvId 
+				+ ", ttl: " + this.ttl 
+				+ ", mvRtng: " + this.mvRtng 
+				+ ", rnngtm: " + this.rnngtm 
+				+ ", rlsDt: " + this.rlsDt 
+				+ ", smmr: " + this.smmr 
+				+ ", mainPstrUrl: " + this.mainPstrUrl 
+				+ ", fbUrl: " + this.fbUrl 
+				+ ", xUrl: " + this.xUrl 
+				+ ", instgrmUrl: " + this.instgrmUrl 
+				+ ", tgln: " + this.tgln 
+				+ ", orgnlTtl: " + this.orgnlTtl 
+				+ ", plyng: " + this.plyng 
+				+ ", lngg: " + this.lngg 
+				+ ", bdgt: " + this.bdgt 
+				+ ", bxOffcGrss: " + this.bxOffcGrss ;
 	}
 
 }

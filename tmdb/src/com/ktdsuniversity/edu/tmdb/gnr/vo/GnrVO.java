@@ -39,7 +39,7 @@ public class GnrVO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		return "gnrId:" +  this.getGnrId() + ", gnrNM: " + this.getNm() + "\n";
 	}
 
 }

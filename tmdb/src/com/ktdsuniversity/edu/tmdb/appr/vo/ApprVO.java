@@ -67,7 +67,7 @@ public class ApprVO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		return "참여자ID: " + this.getInvlvdId() + " 배역: " + this.getStrNM();
 	}
 
 }

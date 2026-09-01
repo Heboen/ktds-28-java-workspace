@@ -8,8 +8,9 @@ import com.ktdsuniversity.edu.tmdb.flmmkr.vo.FlmmkrVO;
 public class InvlvdVO {
 
 	private String invlvdId;
-	private String invlvdPrfl;
 	private String invlvdNm;
+	private String invlvdPrfl;
+	
 
 	// 참여자 한 명이 여러 개의 영화를 제작했다.
 	private List<FlmmkrVO> flmmkrList;
@@ -60,7 +61,7 @@ public class InvlvdVO {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
-	}
+		return "이름:" + getInvlvdNm() + " 프로필: " + getInvlvdPrfl();
+	} 
 
 }
